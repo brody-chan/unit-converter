@@ -1,0 +1,1 @@
+Welcome to the Unit Converter project! This is a simple web application that allows users to convert between different units of measurement. The project is built using HTML, CSS, and JavaScript, making it a great starting point for beginners in web development.
