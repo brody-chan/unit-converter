@@ -11,22 +11,40 @@
       <input type="number" id="inputValue" placeholder="Enter Value">
       <select id="inputUnit">
         <option value="kilometer">Kilometer</option>
-        <option>meter</option>
-        <option>centimeter</option>
-        <option>millimeter</option>
+        <option value="meter">meter</option>
+        <option value="centimeter">centimeter</option>
+        <option value="millimeter">millimeter</option>
       </select>
+
       <select id="outpuntUnit">
         <option value="kilometer">Kilometer</option>
         <option>meter</option>
         <option>centimeter</option>
         <option>millimeter</option>
       </select>
+
+      <p id="result"></p>
+
+      <button id="convertButton">convert</button>
     </div>
 
     <script>
+      const inputValue = document.getElementById('inputValue');
+      const inputUnit = document.getElementById('inputUnit');
+      const outputUnit = document.getElementById('outpuntUnit');
+      const convertButton = document.getElementById('convertButton');
+      const outputValue = document.getElementById('outputValue');
+      const result = document.getElementById('result');
       const input = document.getElementById('input');
-      addEventListener("click", convert);
-      function convert() {
+
+      const conversionFactprs = {
+        kilometer: 1000,
+        meter: 1,
+        centimeter: 0.01;
+        millimeter: 0.001;
+      };
+      
     </script>
+
   </body>
 </html>
