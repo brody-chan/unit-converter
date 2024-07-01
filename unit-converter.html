@@ -1,7 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
+  <head>
+    <meta charset="utf-8">
+    <title>Unit Converter</title>
+    <style>
+    </style>
+  </head>
   <body>
-    
+    <div>
+      <input type="number" id="inputValue" placeholder="Enter Value">
+      <select id="inputUnit">
+        <option value="kilometer">Kilometer</option>
+        <option>meter</option>
+        <option>centimeter</option>
+        <option>millimeter</option>
+      </select>
+      <select id="outpuntUnit">
+        <option value="kilometer">Kilometer</option>
+        <option>meter</option>
+        <option>centimeter</option>
+        <option>millimeter</option>
+      </select>
+    </div>
+
+    <script>
+      const input = document.getElementById('input');
+      addEventListener("click", convert);
+      function convert() {
+    </script>
   </body>
 </html>
