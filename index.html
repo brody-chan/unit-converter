@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Unit Converter</title>
+  <style>
+    .container {
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper,
+    .output-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-right: 10px;
+    }
+
+    .input-wrapper select,
+    .output-wrapper select {
+      margin-top: 5px;
+    }
+
+    .select {
+      width: 150px;
+    }
+
+    .input-value,
+    .output-value {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unit Converter</h1>
+  <div class="container">
+    <div class="input-wrapper">
+      <div class="input-value">
+        <input type="number" id="input" placeholder="Enter value" oninput="convert()">
+      </div>
+      <div>
+        <select name="inputUnit" id="inputUnit" class="select" onchange="convert()" size="5">
+          <option value="1">Meter</option>
+          <option value="2">Kilometer</option>
+          <option value="3">Centimeter</option>
+          <option value="4">Millimeter</option>
+          <option value="5">Yard</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="output-wrapper">
+      <div class="output-value">
+        <input type="number" id="output" placeholder="Converted value" readonly>
+      </div>
+      <div>
+        <select name="outputUnit" id="outputUnit" class="select" onchange="convert()" size="5">
+          <option value="1">Meter</option>
+          <option value="2">Kilometer</option>
+          <option value="3">Centimeter</option>
+          <option value="4">Millimeter</option>
+          <option value="5">Yard</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initial conversion when the page loads
+    convert();
+
+    function convert() {
+      // Get input value and units
+      let inputValue = parseFloat(document.getElementById('input').value);
+      let inputUnit = parseInt(document.getElementById('inputUnit').value);
+      let outputUnit = parseInt(document.getElementById('outputUnit').value);
+
+      // Conversion factors relative to meters
+      const metersFactors = {
+        1: 1,            // Meter
+        2: 1000,         // Kilometer to meter
+        3: 0.01,         // Centimeter to meter
+        4: 0.001,        // Millimeter to meter
+        5: 0.9144        // Yard to meter
+      };
+
+      // Convert input value to meters
+      let inputValueInMeters = inputValue * metersFactors[inputUnit];
+
+      // Convert meters to output unit
+      let outputValue = inputValueInMeters / metersFactors[outputUnit];
+
+      // Update output field
+      document.getElementById('output').value = outputValue.toFixed(6); // Adjust precision as needed
+    }
+
+    // Add event listener to input field to trigger conversion on input change
+    document.getElementById('input').addEventListener('input', convert);
+  </script>
+</body>
+</html>
